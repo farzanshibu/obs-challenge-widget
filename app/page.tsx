@@ -7,7 +7,6 @@ import ProgressBar from "@/components/ProgressBar";
 import Spinner from "@/components/Spinner";
 import { useChallengeStore } from "@/store/fetchstore";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
 
 export default function Config() {
   const router = useRouter();
@@ -17,9 +16,6 @@ export default function Config() {
     loading: state.loading,
     setLoading: state.setLoading,
   }));
-  useEffect(() => {
-    setLoading(false);
-  }, [setLoading]);
 
   return (
     <main className="bg-zinc-950 h-screen flex items-center">
