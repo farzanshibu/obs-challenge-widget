@@ -1,8 +1,8 @@
 "use client";
-import React from "react";
+import React, {FC} from "react";
 import { motion } from "framer-motion";
 
-const Spinner: React.FC = () => {
+const Spinner: FC = () => {
   return (
     <div className="flex justify-center items-center">
       <motion.div
