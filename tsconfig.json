@@ -37,7 +37,13 @@
     ]
   },
   "include": [
-    "src",
+    "app",
+    "components",
+    "lib",
+    "provider",
+    "schema",
+    "server",
+    "store",
     "dist/types/**/*.ts"
   ], // Include source files for type checking
   "exclude": [
