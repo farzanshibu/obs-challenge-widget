@@ -51,11 +51,16 @@ const ProgressBar = ({
       setCompleted(false);
     }
   }, [currentValue, maxValue]);
-  const RemainingDaysCalcualtion = (endDate: Date) => {
+  const RemainingDaysCalculation = (endDate: Date): string => {
     const currentDate = new Date();
-    const diffTime = Math.abs(endDate.getTime() - currentDate.getTime());
+    const diffTime = new Date(endDate).getTime() - currentDate.getTime();
+
+    if (diffTime <= 0) {
+      return "Challenge Ended";
+    }
+
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-    return diffDays > 0 ? `Remaining Days: ${diffDays}` : "Challenge Ended";
+    return `Remaining Days: ${diffDays}`;
   };
 
   return (
@@ -102,7 +107,7 @@ const ProgressBar = ({
       </div>
       {endofDate ? (
         <h2 className="text-md font-bold text-white text-center mt-3">
-          {RemainingDaysCalcualtion(endofDate)}
+          {RemainingDaysCalculation(endofDate)}
         </h2>
       ) : null}
     </div>

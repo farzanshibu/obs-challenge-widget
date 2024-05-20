@@ -33,8 +33,11 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 import { useChallengeStore } from "@/store/fetchstore";
+import io from "socket.io-client";
 import { toast } from "sonner";
 import { Checkbox } from "./ui/checkbox";
+
+const socket = io("http://localhost:3001");
 
 function ChallengeForm() {
   const { loading } = useChallengeStore((state) => ({
@@ -55,6 +58,7 @@ function ChallengeForm() {
       return;
     }
     useChallengeStore.getState().setChallenge({ ...values });
+    socket.emit("addChallenge", { ...values });
   };
 
   return (

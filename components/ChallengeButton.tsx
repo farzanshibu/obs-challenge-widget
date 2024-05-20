@@ -3,8 +3,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useChallengeStore } from "@/store/fetchstore";
 import type { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
+import io from "socket.io-client";
 import { toast } from "sonner";
-
 export interface DataFromSupaBase {
   id: number;
   title: string;
@@ -14,6 +14,8 @@ export interface DataFromSupaBase {
   is_active: boolean;
   created_at: string;
 }
+
+const socket = io("http://localhost:3001");
 
 function ChallengeButton({ router }: { router: AppRouterInstance }) {
   const { challenge, loading, Decrement, Increment, Reset, Delete } =
@@ -25,6 +27,7 @@ function ChallengeButton({ router }: { router: AppRouterInstance }) {
       Reset: state.Reset,
       Delete: state.Delete,
     }));
+
   return (
     <Card className="bg-zinc-800 border-zinc-950">
       <CardHeader>
@@ -44,6 +47,9 @@ function ChallengeButton({ router }: { router: AppRouterInstance }) {
                   return;
                 }
                 Increment();
+                socket.emit("increaseUpdateChallenge", {
+                  ...useChallengeStore.getState().challenge,
+                });
               }
             }}
             disabled={loading}
@@ -62,6 +68,9 @@ function ChallengeButton({ router }: { router: AppRouterInstance }) {
                   return;
                 }
                 Reset();
+                socket.emit("resetUpdateChallenge", {
+                  ...useChallengeStore.getState().challenge,
+                });
               }
             }}
             disabled={loading}
@@ -77,6 +86,9 @@ function ChallengeButton({ router }: { router: AppRouterInstance }) {
               Delete();
               toast.success("Reset Successfully");
               useChallengeStore.persist.clearStorage();
+              socket.emit("removeChallenge", {
+                ...useChallengeStore.getState().challenge,
+              });
               router.push("/");
             }}
             disabled={loading}
@@ -95,6 +107,9 @@ function ChallengeButton({ router }: { router: AppRouterInstance }) {
                   return;
                 }
                 Decrement();
+                socket.emit("decreaseUpdateChallenge", {
+                  ...useChallengeStore.getState().challenge,
+                });
               }
             }}
             disabled={loading}
