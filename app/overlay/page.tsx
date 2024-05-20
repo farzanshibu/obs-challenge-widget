@@ -1,11 +1,12 @@
 "use client";
-import CustomParticles from "@/components/Particles";
-import ProgressBar from "@/components/ProgressBar";
+import React, { useEffect } from "react";
 
-import { useChallengeStore } from "@/store/fetchstore";
-import { useEffect } from "react";
-import io from "socket.io-client";
-const socket = io("http://localhost:3001");
+import { useChallengeStore } from "../../store/fetchstore";
+import {socket} from "../socket";
+
+import CustomParticles from "../../components/Particles";
+import ProgressBar from "../../components/ProgressBar";
+
 
 export default function Overlay() {
   const {
@@ -42,7 +43,7 @@ export default function Overlay() {
     socket.on("removeSent", () => {
       setChallenge(null);
     });
-  }, []);
+  }, [setAnimation, setChallenge, setPlay]);
 
   useEffect(() => {
     let winner = new Audio("./winner.mp3");
@@ -58,7 +59,7 @@ export default function Overlay() {
         });
       }
     }
-  }, [play]);
+  }, [animation, challenge, play]);
 
   return (
     <div className="w-full h-full">
@@ -71,7 +72,7 @@ export default function Overlay() {
               maxValue={challenge.maxValue}
               minValue={0}
               currentValue={challenge.currentValue}
-              endofDate={challenge.endDate}
+              endDate={challenge.endDate}
             />
           </div>
         </>

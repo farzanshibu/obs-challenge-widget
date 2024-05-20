@@ -1,13 +1,21 @@
 "use client";
-import { Button } from "@/components/ui/button";
-import { Calendar } from "@/components/ui/calendar";
+import React from "react";
+import { z } from "zod";
+import { toast } from "sonner";
+import { format } from "date-fns";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { CalendarIcon } from "@radix-ui/react-icons";
+
+import { Button } from "./ui/button";
+import { Calendar } from "./ui/calendar";
 import {
   Card,
   CardContent,
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
+} from "./ui/card";
 import {
   Form,
   FormControl,
@@ -16,28 +24,18 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
+} from "./ui/form";
+import { Input } from "./ui/input";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover";
-import { cn } from "@/lib/utils";
-import { formSchema } from "@/schema/formSchema";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { CalendarIcon } from "@radix-ui/react-icons";
-import { format } from "date-fns";
-import { useForm } from "react-hook-form";
-
-import { z } from "zod";
-
-import { useChallengeStore } from "@/store/fetchstore";
-import io from "socket.io-client";
-import { toast } from "sonner";
+} from "./ui/popover";
+import { cn } from "../lib/utils";
+import { formSchema } from "../schema/formSchema";
+import { useChallengeStore } from "../store/fetchstore";
 import { Checkbox } from "./ui/checkbox";
-
-const socket = io("http://localhost:3001");
+import {socket} from "../app/socket";
 
 function ChallengeForm() {
   const { loading } = useChallengeStore((state) => ({

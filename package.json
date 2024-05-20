@@ -1,12 +1,11 @@
 {
   "name": "obs-overlay-clone",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "server:dev": "npx tsx watch  server/index.ts",
+    "dev": "npx tsx watch server/index.ts",
     "build": "next build",
-    "start": "concurrently \"next start\" \"npx tsx server/index.ts\"",
+    "start": "NODE_ENV=production npx tsx server/index.ts",
     "lint": "next lint"
   },
   "dependencies": {
@@ -23,14 +22,10 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "date-fns": "^3.6.0",
-    "express": "^4.19.2",
     "framer-motion": "^11.2.4",
-    "http": "0.0.1-security",
     "lucide-react": "^0.378.0",
     "next": "14.2.3",
-    "next-compose": "^0.0.2",
     "next-themes": "^0.3.0",
-    "next-ws": "^1.0.1",
     "react": "^18",
     "react-day-picker": "^8.10.1",
     "react-dom": "^18",
@@ -43,24 +38,23 @@
     "tailwindcss-animate": "^1.0.7",
     "use-sound": "^4.0.1",
     "utf-8-validate": "^6.0.4",
-    "ws": "^8.17.0",
     "zod": "^3.23.8",
     "zustand": "^4.5.2"
   },
   "devDependencies": {
-    "@types/express": "^4.17.12",
     "@types/node": "^20.12.12",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "eslint": "^8",
     "eslint-config-next": "14.2.3",
     "file-loader": "^6.2.0",
-    "nodemon": "^3.1.0",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
+    "next-ws": "^1.0.1",
     "tsx": "^4.10.5",
+    "ws": "^8.17.0",
     "typescript": "^5",
     "url-loader": "^4.1.1"
   },
-  "type": "module"
+  "packageManager": "pnpm@9.1.1+sha512.14e915759c11f77eac07faba4d019c193ec8637229e62ec99eefb7cf3c3b75c64447882b7c485142451ee3a6b408059cdfb7b7fa0341b975f12d0f7629c71195"
 }

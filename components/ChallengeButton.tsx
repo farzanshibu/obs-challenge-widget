@@ -1,10 +1,13 @@
 "use client";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { useChallengeStore } from "@/store/fetchstore";
-import type { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
-import io from "socket.io-client";
+import React from "react";
 import { toast } from "sonner";
+import type { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
+
+import { Button } from "./ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
+import { useChallengeStore } from "../store/fetchstore";
+import { socket } from "../app/socket";
+
 export interface DataFromSupaBase {
   id: number;
   title: string;
@@ -14,8 +17,6 @@ export interface DataFromSupaBase {
   is_active: boolean;
   created_at: string;
 }
-
-const socket = io("http://localhost:3001");
 
 function ChallengeButton({ router }: { router: AppRouterInstance }) {
   const { challenge, loading, Decrement, Increment, Reset, Delete } =

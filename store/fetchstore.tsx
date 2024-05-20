@@ -1,10 +1,11 @@
-import type { FormSchema } from "@/schema/formSchema";
 import { create } from "zustand";
 import {
   createJSONStorage,
   persist,
   subscribeWithSelector,
 } from "zustand/middleware";
+
+import type { FormSchema } from "../schema/formSchema";
 
 type Store = {
   loading: boolean;

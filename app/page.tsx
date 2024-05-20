@@ -1,21 +1,40 @@
 "use client";
-import Link from "next/link";
 
-import ChallengeButton from "@/components/ChallengeButton";
-import ChallengeForm from "@/components/ChallengeForm";
-import ProgressBar from "@/components/ProgressBar";
-import Spinner from "@/components/Spinner";
-import { useChallengeStore } from "@/store/fetchstore";
+import Link from "next/link";
+import React, {useEffect} from "react";
 import { useRouter } from "next/navigation";
+
+import ChallengeButton from "../components/ChallengeButton";
+import ChallengeForm from "../components/ChallengeForm";
+import ProgressBar from "../components/ProgressBar";
+import Spinner from "../components/Spinner";
+import { socket } from "./socket";
+import { useChallengeStore } from "../store/fetchstore";
 
 export default function Config() {
   const router = useRouter();
 
-  const { challenge, loading, setLoading } = useChallengeStore((state) => ({
+  const { challenge, loading,setChallenge } = useChallengeStore((state) => ({
     challenge: state.challenge,
     loading: state.loading,
-    setLoading: state.setLoading,
+    setChallenge: state.setChallenge
   }));
+
+  useEffect(() => {
+    socket.on("connect", () => {
+      console.log("Connected to server");
+    });
+
+    socket.on("addSent", (data) => {
+      setChallenge(data);
+    });
+    socket.on("updateSend", (data) => {
+      setChallenge(data.challenge);
+    });
+    socket.on("removeSent", () => {
+      setChallenge(null);
+    });
+  }, [setChallenge]);
 
   return (
     <main className="bg-zinc-950 h-screen flex items-center">
@@ -32,7 +51,7 @@ export default function Config() {
                   maxValue={challenge.maxValue}
                   minValue={0}
                   currentValue={challenge.currentValue}
-                  endofDate={challenge.endDate}
+                  endDate={challenge.endDate}
                   className="w-full"
                 />
               ) : null}

@@ -44,6 +44,9 @@ importers:
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
+      concurrently:
+        specifier: 8.2.2
+        version: 8.2.2
       date-fns:
         specifier: ^3.6.0
         version: 3.6.0
@@ -68,9 +71,6 @@ importers:
       next-themes:
         specifier: ^0.3.0
         version: 0.3.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      next-ws:
-        specifier: ^1.0.1
-        version: 1.0.1(next@14.2.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)(ws@8.17.0(bufferutil@4.0.8)(utf-8-validate@6.0.4))
       react:
         specifier: ^18
         version: 18.3.1
@@ -107,9 +107,6 @@ importers:
       utf-8-validate:
         specifier: ^6.0.4
         version: 6.0.4
-      ws:
-        specifier: ^8.17.0
-        version: 8.17.0(bufferutil@4.0.8)(utf-8-validate@6.0.4)
       zod:
         specifier: ^3.23.8
         version: 3.23.8
@@ -129,9 +126,6 @@ importers:
       '@types/react-dom':
         specifier: ^18
         version: 18.3.0
-      concurrently:
-        specifier: ^8.2.2
-        version: 8.2.2
       eslint:
         specifier: ^8
         version: 8.57.0
@@ -141,6 +135,9 @@ importers:
       file-loader:
         specifier: ^6.2.0
         version: 6.2.0(webpack@5.91.0)
+      next-ws:
+        specifier: ^1.0.1
+        version: 1.0.1(next@14.2.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)(ws@8.17.0(bufferutil@4.0.8)(utf-8-validate@6.0.4))
       nodemon:
         specifier: ^3.1.0
         version: 3.1.0
@@ -159,6 +156,9 @@ importers:
       url-loader:
         specifier: ^4.1.1
         version: 4.1.1(file-loader@6.2.0(webpack@5.91.0))(webpack@5.91.0)
+      ws:
+        specifier: ^8.17.0
+        version: 8.17.0(bufferutil@4.0.8)(utf-8-validate@6.0.4)
 
 packages:
 

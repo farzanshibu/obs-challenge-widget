@@ -1,9 +1,11 @@
 "use client";
-import { loadAll } from "@tsparticles/all";
-import { ISourceOptions, type Container } from "@tsparticles/engine";
+
 import Particles, { initParticlesEngine } from "@tsparticles/react";
-import { useEffect, useState } from "react";
+import { ISourceOptions, type Container } from "@tsparticles/engine";
+import React, { useEffect, useState } from "react";
 import { TypeAnimation } from "react-type-animation";
+import { loadAll } from "@tsparticles/all";
+
 import AmongUsOptions from "./AmongUS.json";
 import ConfettiOptions from "./Confetti.json";
 
