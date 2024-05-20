@@ -1,42 +1,47 @@
 {
   "compilerOptions": {
+    "target": "es5", // Set the target JavaScript version (optional)
     "lib": [
       "dom",
       "dom.iterable",
       "esnext"
-    ],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "noEmit": true,
-    "forceConsistentCasingInFileNames": true,
-    "target": "es5", // Set the target JavaScript version (optional)
-    "module": "commonjs", // (Optional) Set the module system (commonjs for Node.js)
+    ], // Include necessary libraries
+    "allowJs": true, // Allow importing JavaScript files (optional)
+    "skipLibCheck": true, // Skip type checking for built-in library files (optional)
+    "strict": true, // Enable strict mode for type checking (recommended)
+    "forceConsistentCasingInFileNames": true, // Enforce consistent file name casing (optional)
+    "module": "commonjs", // Set module system (commonjs for Node.js)
+    "moduleResolution": "node", // Module resolution strategy (node for Node.js)
     "esModuleInterop": true, // Allow importing CommonJS modules in ES modules (optional)
+    "allowSyntheticDefaultImports": true, // Allow importing with `import defaultMember from 'module'` (optional)
+    "noImplicitAny": true, // Disallow implicit `any` type (recommended)
+    "strictNullChecks": true, // Disallow using `null` and `undefined` unless explicitly typed (recommended)
+    "jsx": "preserve", // Use JSX for React (optional)
+    "sourceMap": true, // Generate source maps for debugging (optional)
+    "declaration": true, // Generate type declaration files (.d.ts) (optional)
+    "outDir": "./out", // Output directory for generated files (optional)
+    "baseUrl": ".", // Base directory for resolving modules (optional)
+    "paths": {
+      "@/*": [
+        "/*"
+      ] // Map `~` alias to your source directory (optional)
+    },
+    "noEmit": true,
+    "incremental": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
-    "incremental": true,
     "plugins": [
       {
         "name": "next"
       }
-    ],
-    "paths": {
-      "@/*": [
-        "./*"
-      ]
-    },
-    "moduleResolution": "node"
+    ]
   },
   "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    ".next/types/**/*.ts",
-    "server/index.ts"
-  ],
+    "src",
+    "dist/types/**/*.ts"
+  ], // Include source files for type checking
   "exclude": [
-    "node_modules"
-  ]
+    "node_modules",
+    ".next"
+  ] // Exclude non-source files
 }

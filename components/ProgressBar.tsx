@@ -1,14 +1,14 @@
 "use client";
-import { cn } from "@/lib/utils";
+import { cn } from "../lib/utils";
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 interface ProgressBarProps {
   title: string;
   maxValue: number;
   minValue: number;
   currentValue: number;
-  endofDate?: Date;
+  endDate?: Date;
   className?: string;
 }
 
@@ -17,7 +17,7 @@ const ProgressBar = ({
   maxValue,
   minValue,
   currentValue,
-  endofDate,
+  endDate,
   className,
 }: ProgressBarProps) => {
   const [completed, setCompleted] = useState(false);
@@ -105,9 +105,9 @@ const ProgressBar = ({
           </motion.div>
         </div>
       </div>
-      {endofDate ? (
+      {endDate ? (
         <h2 className="text-md font-bold text-white text-center mt-3">
-          {RemainingDaysCalculation(endofDate)}
+          {RemainingDaysCalculation(endDate)}
         </h2>
       ) : null}
     </div>

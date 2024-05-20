@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 
 import "./globals.css";
-import Provider from "@/provider";
+import Provider from "../provider";
+import React from "react";
 const inter = Poppins({ weight: "500", subsets: ["latin"] });
 
 export const metadata: Metadata = {

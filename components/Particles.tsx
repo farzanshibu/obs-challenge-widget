@@ -2,9 +2,11 @@
 import { loadAll } from "@tsparticles/all";
 import { ISourceOptions, type Container } from "@tsparticles/engine";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { TypeAnimation } from "react-type-animation";
+// @ts-ignore
 import AmongUsOptions from "./AmongUS.json";
+// @ts-ignore
 import ConfettiOptions from "./Confetti.json";
 
 interface CustomParticlesProps {

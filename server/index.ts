@@ -1,4 +1,4 @@
-import { useChallengeStore } from '@/store/fetchstore';
+import { useChallengeStore } from '../store/fetchstore';
 import express from 'express';
 import http from 'http';
 import { Server } from 'socket.io';

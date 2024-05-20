@@ -1,4 +1,4 @@
-import type { FormSchema } from "@/schema/formSchema";
+import type { FormSchema } from "../schema/formSchema";
 import { create } from "zustand";
 import {
   createJSONStorage,

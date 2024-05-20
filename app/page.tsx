@@ -1,17 +1,18 @@
 "use client";
 import Link from "next/link";
 
-import ChallengeButton from "@/components/ChallengeButton";
-import ChallengeForm from "@/components/ChallengeForm";
-import ProgressBar from "@/components/ProgressBar";
-import Spinner from "@/components/Spinner";
-import { useChallengeStore } from "@/store/fetchstore";
+import ChallengeButton from "../components/ChallengeButton";
+import ChallengeForm from "../components/ChallengeForm";
+import ProgressBar from "../components/ProgressBar";
+import Spinner from "../components/Spinner";
+import { useChallengeStore } from "../store/fetchstore";
 import { useRouter } from "next/navigation";
+import React from "react";
 
 export default function Config() {
   const router = useRouter();
 
-  const { challenge, loading, setLoading } = useChallengeStore((state) => ({
+  const { challenge, loading } = useChallengeStore((state) => ({
     challenge: state.challenge,
     loading: state.loading,
     setLoading: state.setLoading,
@@ -32,7 +33,7 @@ export default function Config() {
                   maxValue={challenge.maxValue}
                   minValue={0}
                   currentValue={challenge.currentValue}
-                  endofDate={challenge.endDate}
+                  endDate={challenge.endDate}
                   className="w-full"
                 />
               ) : null}
